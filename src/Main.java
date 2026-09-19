@@ -2,6 +2,7 @@ import core.Escalonador;
 import core.Processo;
 import core.ResultadoSimulacao;
 import relatorio.RelatorioSimulacao;
+import roundrobin.EscalonadorMultiplasFilas;
 import roundrobin.EscalonadorRoundRobin;
 import roundrobin.service.LeitorProcessosCsv;
 
@@ -28,7 +29,7 @@ public class Main {
                     executarEscalonador(scanner, new EscalonadorRoundRobin());
                     break;
                 case 2:
-                    System.out.println("Múltiplas Filas ainda não foi implementado.");
+                    executarEscalonador(scanner, new EscalonadorMultiplasFilas());
                     break;
                 case 3:
                     System.out.println("Método proposto pelo grupo ainda não foi implementado.");

@@ -1,4 +1,4 @@
-package roundrobin;
+package escalonadores;
 
 import core.Escalonador;
 import core.Processo;

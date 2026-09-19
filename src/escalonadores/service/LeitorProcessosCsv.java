@@ -1,4 +1,4 @@
-package roundrobin.service;
+package escalonadores.service;
 
 import core.Processo;
 

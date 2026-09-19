@@ -2,6 +2,7 @@ import core.Escalonador;
 import core.Processo;
 import core.ResultadoSimulacao;
 import relatorio.RelatorioSimulacao;
+import roundrobin.EscalonadorEFP;
 import roundrobin.EscalonadorMultiplasFilas;
 import roundrobin.EscalonadorRoundRobin;
 import roundrobin.service.LeitorProcessosCsv;
@@ -32,7 +33,7 @@ public class Main {
                     executarEscalonador(scanner, new EscalonadorMultiplasFilas());
                     break;
                 case 3:
-                    System.out.println("Método proposto pelo grupo ainda não foi implementado.");
+                    executarEscalonador(scanner, new EscalonadorEFP());
                     break;
                 case 0:
                     System.out.println("Simulador encerrado.");
@@ -66,10 +67,13 @@ public class Main {
         }
     }
 
-    /** Lê o CSV pelo teclado, executa o algoritmo escolhido e imprime seu relatório. */
+    /**
+     * Lê o CSV pelo teclado, executa o algoritmo escolhido e imprime seu relatório.
+     */
     private static void executarEscalonador(Scanner scanner, Escalonador escalonador) {
         Path caminho = lerCaminhoCsv(scanner);
-        if (caminho == null) return;
+        if (caminho == null)
+            return;
 
         try {
             List<Processo> processos = new LeitorProcessosCsv().ler(caminho);
@@ -82,7 +86,9 @@ public class Main {
         }
     }
 
-    /** Solicita o caminho do CSV e valida se ele aponta para um arquivo existente. */
+    /**
+     * Solicita o caminho do CSV e valida se ele aponta para um arquivo existente.
+     */
     private static Path lerCaminhoCsv(Scanner scanner) {
         System.out.print("Informe o caminho do arquivo CSV: ");
         Path caminho = Paths.get(scanner.nextLine().trim());
